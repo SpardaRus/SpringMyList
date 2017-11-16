@@ -196,7 +196,7 @@ public class MyList<E> extends AbstractList<E> implements List<E>, RandomAccess,
         Objects.checkIndex(index, size);
         E oldValue = elementData(index);
         elementData[index] = element;
-        sorts();
+        sorts(index);
         return oldValue;
     }
 
@@ -208,18 +208,44 @@ public class MyList<E> extends AbstractList<E> implements List<E>, RandomAccess,
         size = s + 1;
     }
 
+    private void sorts(int e){
+        elementData=sorts.Sorts.sort(elementData,size(), e); //Sorted One
 
+    }
     private void sorts(){
         try{
+//            Comparable[] elementTemp=new Comparable[size()]; //Sorted MultiMerger
+//
+//            for (int i = 0; i < size(); i++) {
+//
+//                elementTemp[i] = (Comparable)elementData[i];
+//
+//            }
+//
+//            MultiMerger ms=new MultiMerger(elementTemp);
+//
+//            ms.run();
+//
+//
+//
+//            elementData=ms.getSorted();
 
-            Comparable[] elementTemp=new Comparable[size()];
-            for (int i = 0; i < size(); i++) {
-                elementTemp[i] = (Comparable)elementData[i];
-            }
-            MultiMerger ms=new MultiMerger(elementTemp);
-            ms.run();
 
-            elementData=ms.getSorted();
+
+           elementData=sorts.Sorts.sort(elementData,size(),size()-1); //Sorted One
+
+
+
+//            Comparable[] elementTemp=new Comparable[size()]; //Sorted MySort(Shell)
+//
+//            for (int i = 0; i < size(); i++) {
+//
+//                elementTemp[i] = (Comparable)elementData[i];
+//
+//            }
+//
+//            sorts.MySort.sort(elementTemp);
+//            elementData=elementTemp;
 
         }catch(Exception e){
              System.out.println("Class '"+elementData(0).getClass().getName()+"' must implements Comparable. Object '"+elementData(0).getClass().getName()+"' inserted in the order");

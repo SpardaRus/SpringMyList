@@ -4,6 +4,7 @@ import test.Car;
 import test.Human;
 
 import java.math.BigInteger;
+import java.util.Random;
 
 
 public class Main {
@@ -60,5 +61,18 @@ public class Main {
         mc.add((Car)ctx.getBean("car"));
 
         System.out.println(mc);
+
+
+        MyList<BigInteger> ib=new MyList<BigInteger>();
+        Random randomizer = new Random();
+        long startTime = System.currentTimeMillis();
+        int sss=10000;
+        for ( int i = 0; i < sss; i++ ) {
+
+            ib.add(new BigInteger(""+randomizer.nextInt( 10_000 ))) ;
+
+        }
+        long endTime = System.currentTimeMillis();
+        System.out.println("N= "+sss+"; Time: "+(endTime-startTime)/1000);
     }
 }
