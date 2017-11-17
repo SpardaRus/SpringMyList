@@ -1,16 +1,22 @@
 package sorts;
 
-public class SimpleMerger {
+public class SimpleMerger implements SortI{
 
 
 
     private Comparable[] unsorted, sorted;
 
+    public SimpleMerger(){
 
+    }
 
-    public SimpleMerger( Comparable[] unsorted ) {
+    public SimpleMerger( Object[] unsorted ) {
 
-        this.unsorted = unsorted;
+        Comparable[] elementTemp=new Comparable[unsorted.length];
+        for (int i = 0; i < unsorted.length; i++) {
+            elementTemp[i] = (Comparable)unsorted[i];
+        }
+        this.unsorted = elementTemp;
 
     }
 
@@ -138,4 +144,13 @@ public class SimpleMerger {
 
     }
 
+    @Override
+    public Object[] sort(Object[] elementData, int size) {
+        Object[] elementTemp = new Object[size];
+        System.arraycopy(elementData,0,elementTemp,0,size);
+        SimpleMerger ss=new SimpleMerger(elementTemp);
+        ss.sort();
+        elementData=ss.getSorted();
+        return elementData;
+    }
 }

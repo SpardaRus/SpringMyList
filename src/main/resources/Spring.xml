@@ -11,22 +11,24 @@
  		http://www.springframework.org/schema/beans/spring-beans-3.2.xsd">
 
 
+    <bean id="sorts" class="sorts.Sorts"/>
+    <bean id="sMerger" class="sorts.SimpleMerger"/>
+    <bean id="mMerger" class="sorts.MultiMerger"/>
+    <bean id="mySort" class="sorts.MySort"/>
 
+    <bean id="test" class="test.Test"/>
+
+    <bean id="sort" class="test.Human"/>
     <bean id="human" class="test.Human"/>
 
     <bean id="car" class="test.Car">
         <constructor-arg value="255" />
     </bean>
 
+    <bean id="myList" class="list.MyList" scope="prototype">
+        <property name="sortI" ref="sorts">
 
-
-
-
-
-
-
-
-
-
+        </property>
+    </bean>
 
 </beans>

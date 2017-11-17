@@ -1,6 +1,6 @@
 package sorts;
 
-public class MultiMerger extends Thread {
+public class MultiMerger extends Thread implements SortI {
 
 
     private Comparable[] unsorted, sorted;
@@ -10,10 +10,15 @@ public class MultiMerger extends Thread {
 
     private static final int MAX_THREADS = 4;
 
+    public MultiMerger() {
 
-    public MultiMerger(Comparable[] unsorted) {
-
-        this.unsorted = unsorted;
+    }
+    public MultiMerger(Object[] unsorted) {
+        Comparable[] elementTemp=new Comparable[unsorted.length];
+        for (int i = 0; i < unsorted.length; i++) {
+            elementTemp[i] = (Comparable)unsorted[i];
+        }
+        this.unsorted = elementTemp;
 
     }
 
@@ -110,4 +115,13 @@ public class MultiMerger extends Thread {
 
     }
 
+    @Override
+    public Object[] sort(Object[] elementData, int size) {
+            Object[] elementTemp = new Object[size];
+            System.arraycopy(elementData,0,elementTemp,0,size);
+            MultiMerger ms=new MultiMerger(elementTemp);
+            ms.run();
+            elementData=ms.getSorted();
+        return elementData;
+    }
 }

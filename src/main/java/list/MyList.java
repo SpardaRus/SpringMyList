@@ -1,10 +1,19 @@
 package list;
 
+import sorts.*;
 import java.util.*;
 import java.util.function.*;
 
 public class MyList<E> extends AbstractList<E> implements List<E>, Cloneable {
+    public SortI sortI;
 
+    public SortI getSortI() {
+        return sortI;
+    }
+
+    public void setSortI(SortI sortI) {
+        this.sortI = sortI;
+    }
 
     private static final int DEFAULT_CAPACITY = 10;
 
@@ -179,20 +188,12 @@ public class MyList<E> extends AbstractList<E> implements List<E>, Cloneable {
 
     private void sorts(){
         try{
-//            Comparable[] elementTemp=new Comparable[size()]; //Sorted MultiMerger
-//            for (int i = 0; i < size(); i++) {
-//                elementTemp[i] = (Comparable)elementData[i];
-//            }
-//            MultiMerger ms=new MultiMerger(elementTemp);
-//            ms.run();
-//            elementData=ms.getSorted();
-           elementData=sorts.Sorts.sort(elementData,size()); //Sorted One
-//            Comparable[] elementTemp=new Comparable[size()]; //Sorted MySort(Shell)
-//            for (int i = 0; i < size(); i++) {
-//                elementTemp[i] = (Comparable)elementData[i];
-//            }
-//            sorts.MySort.sort(elementTemp);
-//            elementData=elementTemp;
+
+//            SortI sortI=new Sorts();
+//            SortI msortI=new MultiMerger();
+//            SortI ssortI=new SimpleMerger();
+            elementData=sortI.sort(elementData,size());
+
 
         }catch(Exception e){
              System.out.println("Class '"+elementData(0).getClass().getName()+"' must implements Comparable. Object '"+elementData(0).getClass().getName()+"' inserted in the order");

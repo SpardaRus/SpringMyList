@@ -1,6 +1,6 @@
 package sorts;
 
-public class MySort{
+public class MySort implements SortI{
     public static void sort(Comparable[] array) {
 
         int h = 1;
@@ -30,6 +30,18 @@ public class MySort{
         Comparable temp = array[i];
         array[i] = array[j];
         array[j] = temp;
+    }
+
+    @Override
+    public Object[] sort(Object[] elementData, int size) {
+
+            Comparable[] elementTemp=new Comparable[size]; //Sorted MySort(Shell)
+            for (int i = 0; i < size; i++) {
+                elementTemp[i] = (Comparable)elementData[i];
+            }
+            sorts.MySort.sort(elementTemp);
+
+        return elementTemp;
     }
 }
 

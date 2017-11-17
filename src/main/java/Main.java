@@ -1,5 +1,11 @@
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
 public class Main {
     public static void main(String[] args) {
-        new test.Test().start();
+       ApplicationContext ctx=new ClassPathXmlApplicationContext("Spring.xml");
+          //  ctx.getBean("myList");
+        new test.Test().start(ctx);
+
     }
 }

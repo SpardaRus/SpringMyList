@@ -11,12 +11,12 @@ import java.util.Random;
 import list.MyList;
 
 public class Test {
-    public void start(){
+    public void start(ApplicationContext ctx){
         System.out.println("Start test");
-        ApplicationContext ctx=new ClassPathXmlApplicationContext("Spring.xml");
 
         System.out.println("Test: BigInteger");
-        MyList<BigInteger> in=new MyList<BigInteger>();
+        MyList<BigInteger> in=(MyList<BigInteger>) ctx.getBean("myList");
+
         in.add(new BigInteger("2568979879879879878978485184"));
         in.add(new BigInteger("3259278637868769786789999999999"));
         in.add(new BigInteger("1868678678678687"));
@@ -27,7 +27,7 @@ public class Test {
         System.out.println();
 
         System.out.println("Test: String");
-        MyList<String> ms=new MyList<String>();
+        MyList<String> ms=(MyList<String>)ctx.getBean("myList");
 
         ms.add("AAAAAfdsfdsf");
         ms.add("qwewq");
@@ -42,7 +42,7 @@ public class Test {
 
 
         System.out.println("Test: Human - no implements Comparable");
-        MyList<Human> mh=new MyList<Human>();
+        MyList<Human> mh=(MyList<Human>)ctx.getBean("myList");
         mh.add(new Human("Grand"));
         mh.add(new Human("Stefan"));
         mh.add(new Human("Alex"));
@@ -57,7 +57,7 @@ public class Test {
         System.out.println();
 
         System.out.println("Test: Car - implements Comparable");
-        MyList<Car> mc=new MyList<Car>();
+        MyList<Car> mc=(MyList<Car>)ctx.getBean("myList");
 
         mc.add(new Car(123));
         mc.add(new Car(3333));
@@ -91,8 +91,9 @@ public class Test {
         System.out.println(lc);
         System.out.println();
 
+
         System.out.println("Test: Time sort BigInteger");
-        MyList<BigInteger> ib=new MyList<BigInteger>();
+        MyList<BigInteger> ib=(MyList<BigInteger>)ctx.getBean("myList");
         Random randomizer = new Random();
         long startTime = System.currentTimeMillis();
         int sss=10000;
@@ -102,7 +103,7 @@ public class Test {
 
         }
         long endTime = System.currentTimeMillis();
-        System.out.println("N= "+sss+"; Time: "+(endTime-startTime)/1000);
+        System.out.println("    N= "+sss+"; Time: "+(endTime-startTime)/1000);
         System.out.println("End test");
     }
 }

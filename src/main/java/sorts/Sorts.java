@@ -1,9 +1,9 @@
 package sorts;
 
-public class Sorts {
+public class Sorts implements SortI{
 
 
-    public static Object[] sort(Object[] elementData, int size) {
+    public Object[] sort(Object[] elementData, int size) {
 
         if (size > 0) {
             Comparable[] elementTemp = new Comparable[size];
