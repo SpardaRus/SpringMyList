@@ -1,5 +1,8 @@
 package test;
 
+/**
+ * Test Object Car whith method "compareTo"
+ */
 public class Car implements Comparable<Car> {
     private int price;
     public Car(int p){

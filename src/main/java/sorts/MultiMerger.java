@@ -1,18 +1,24 @@
 package sorts;
 
+/**
+ * This class is a multithreaded merge sort.
+ * He implements SortI.
+ */
 public class MultiMerger extends Thread implements SortI {
 
 
     private Comparable[] unsorted, sorted;
 
 
-    // Ограничиваем максимальное количество запускаемых потоков
-
+    /**
+     * Limit the number of threads.
+     */
     private static final int MAX_THREADS = 4;
 
     public MultiMerger() {
 
     }
+
     public MultiMerger(Object[] unsorted) {
         Comparable[] elementTemp=new Comparable[unsorted.length];
         for (int i = 0; i < unsorted.length; i++) {
@@ -22,7 +28,9 @@ public class MultiMerger extends Thread implements SortI {
 
     }
 
-
+    /**
+     * Runs is partitioning the input array and start the recursive algorithm
+     */
     public void run() {
 
         int middle;
@@ -32,14 +40,14 @@ public class MultiMerger extends Thread implements SortI {
 
         if (unsorted.length <= 1) {
 
-            // Массив из 1 элемента точно отсортирован :)
+
 
             sorted = unsorted;
 
         } else {
 
 
-            // Иначе делим массив на левую и правую части
+
 
             middle = unsorted.length / 2;
 
@@ -54,9 +62,7 @@ public class MultiMerger extends Thread implements SortI {
             System.arraycopy(unsorted, middle, right, 0, unsorted.length - middle);
 
 
-            // Пока не превысили максимальное количество потоков, запускаем рекурсивно новые потоки на 2-х
 
-            // новых массивах
 
             if (activeCount() < MAX_THREADS) {
 
@@ -70,7 +76,7 @@ public class MultiMerger extends Thread implements SortI {
                 rightSort.start();
 
 
-                // Лепим докучи, как только потоки дождутся друг друга
+
 
                 try {
 
@@ -87,7 +93,7 @@ public class MultiMerger extends Thread implements SortI {
                 }
 
 
-            } else {  // Тут уже новых потоков запускать нельзя - запускаем простой синглтредед алгоритм
+            } else {
 
                 SimpleMerger leftSort = new SimpleMerger(left);
 
@@ -115,6 +121,12 @@ public class MultiMerger extends Thread implements SortI {
 
     }
 
+    /**
+     * Prepares the input array of objects to sort and using a method "run" that sorts it.
+     * @param elementData Array of objects
+     * @param size  The length of the array
+     * @return The sorted array
+     */
     @Override
     public Object[] sort(Object[] elementData, int size) {
             Object[] elementTemp = new Object[size];

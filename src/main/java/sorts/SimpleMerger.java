@@ -1,5 +1,8 @@
 package sorts;
-
+/**
+ * This class is a singlehreaded merge sort.
+ * He implements SortI.
+ */
 public class SimpleMerger implements SortI{
 
 
@@ -23,9 +26,7 @@ public class SimpleMerger implements SortI{
 
 
     /**
-
-     * Собственно здесь производится разбиение входного массива и запуск рекурсивного алгоритма
-
+     * Runs is partitioning the input array and start the recursive algorithm
      */
 
     public void sort() {
@@ -81,11 +82,12 @@ public class SimpleMerger implements SortI{
 
 
     /**
-
-     * Статический метод. Мержит два отсортированных массива
-
-     * Используется и в многопоточной версии сортировки
-
+     * Combines two sorted array
+     * Used in multi-threaded sorting
+     * @see sorts.MultiMerger
+     * @param leftPart Left part array
+     * @param rightPart Right part array
+     * @return The sorted array
      */
 
     public static Comparable[] merge( Comparable[] leftPart, Comparable[] rightPart ) {
@@ -143,7 +145,12 @@ public class SimpleMerger implements SortI{
         return sorted;
 
     }
-
+    /**
+     * Prepares the input array of objects to sort and using a method "sort" that sorts it.
+     * @param elementData Array of objects
+     * @param size  The length of the array
+     * @return The sorted array
+     */
     @Override
     public Object[] sort(Object[] elementData, int size) {
         Object[] elementTemp = new Object[size];

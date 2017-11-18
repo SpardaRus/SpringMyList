@@ -1,5 +1,7 @@
 package test;
-
+/**
+ * Test Object Human has no method "compareTo"
+ */
 public class Human {
     private String name;
     public Human(){

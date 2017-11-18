@@ -1,6 +1,13 @@
 package sorts;
-
+/**
+ * This class is a shell sort.
+ * He implements SortI.
+ */
 public class MySort implements SortI{
+    /**
+     * Produced by sorting Shell the input array with a step of 3
+     * @param array Array objects
+     */
     public static void sort(Comparable[] array) {
 
         int h = 1;
@@ -14,6 +21,10 @@ public class MySort implements SortI{
 
     }
 
+    /**Produce insertion sort with a stepProduce insertion sort with a step
+     * @param array Array objects
+     * @param h step
+     */
     private static void hSort(Comparable[] array, int h) {
         int length = array.length;
         for (int i = h; i < length; i++) {
@@ -26,12 +37,24 @@ public class MySort implements SortI{
             }
         }
     }
+
+    /**
+     * Swap the array elements
+     * @param array Array objects
+     * @param i Position item1
+     * @param j Position item2
+     */
     private static void swap(Comparable[] array, int i, int j) {
         Comparable temp = array[i];
         array[i] = array[j];
         array[j] = temp;
     }
-
+    /**
+     * Prepares the input array of objects to sort and using a method "run" that sorts it.
+     * @param elementData Array of objects
+     * @param size  The length of the array
+     * @return The sorted array
+     */
     @Override
     public Object[] sort(Object[] elementData, int size) {
 

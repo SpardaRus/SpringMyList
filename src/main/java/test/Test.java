@@ -10,7 +10,14 @@ import java.util.List;
 import java.util.Random;
 import list.MyList;
 
+/**
+ * Class for test class "MyList"
+ */
 public class Test {
+    /**
+     * test class "MyList"
+     * @param ctx ApplicationContext
+     */
     public void start(ApplicationContext ctx){
         System.out.println("Start test");
 
