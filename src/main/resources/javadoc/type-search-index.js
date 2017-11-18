@@ -1,0 +1,1 @@
+typeSearchIndex = [{"p":"test","l":"Car"},{"p":"test","l":"Human"},{"p":"start","l":"Main"},{"p":"sorts","l":"MultiMerger"},{"p":"list","l":"MyList"},{"p":"list","l":"MyList.Itr"},{"p":"sorts","l":"MySort"},{"p":"sorts","l":"SimpleMerger"},{"p":"sorts","l":"SortI"},{"p":"sorts","l":"Sorts"},{"p":"test","l":"Test"}]
