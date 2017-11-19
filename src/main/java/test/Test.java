@@ -96,6 +96,9 @@ public class Test {
         lc.addAll(0,mc);
         System.out.println("    ArrayList<Car> - addAll MyList<Car>:");
         System.out.println(lc);
+        mc.addAll(lc);
+        System.out.println("    MyList<Car> - addAll ArrayList<Car>:");
+        System.out.println(mc);
         System.out.println();
 
 
