@@ -6,7 +6,7 @@ Task:
     the ArrayList can not be used.
 
 Description of the completed tasks:
-        Was create on the basis of the MyList array,
+        Was create MyList on the basis of the array,
         which implemented interface list
         and automatically sorts multi-threaded merge-sort
         (https://ru.wikipedia.org/wiki/Сортировка_слиянием ).
