@@ -90,8 +90,8 @@ public class Test {
 
         Iterator<Car> iter = mc.iterator();
         while(iter.hasNext()){
-            Car c=iter.next();
-            System.out.println(""+mc.indexOf(c)+" "+c);
+            Car comp=iter.next();
+            System.out.println(""+mc.indexOf(comp)+" "+comp);
         }
         System.out.println();
 

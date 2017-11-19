@@ -1,4 +1,7 @@
 package sorts;
+
+import java.util.Comparator;
+
 /**
  * This class inserts an element into the appropriate position in the sorted array.
  * He implements SortI.
@@ -11,7 +14,7 @@ public class Sorts implements SortI{
      * @param size  The length of the array
      * @return The sorted array
      */
-    public Object[] sort(Object[] elementData, int size) {
+    public Object[] sort(Object[] elementData, int size, Comparator comparator) {
 
         if (size > 0) {
             Comparable[] elementTemp = new Comparable[size];

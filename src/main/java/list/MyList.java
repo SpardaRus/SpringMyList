@@ -1,6 +1,8 @@
 package list;
 
 import sorts.*;
+import test.Human;
+
 import java.util.*;
 import java.util.function.*;
 
@@ -13,7 +15,7 @@ public class MyList<E> extends AbstractList<E> implements List<E>, Cloneable {
      * Sorted
      */
     public SortI sortI;
-    private Comparator c=null;
+    public Comparator c;
 
     public Comparator getC() {
         return c;
@@ -345,11 +347,9 @@ public class MyList<E> extends AbstractList<E> implements List<E>, Cloneable {
      * Sorts MyList
      */
     private void sorts(){
-        try{if(c!=null){
-            sort(c);
-        }else {
-            elementData = sortI.sort(elementData, size());
-        }
+        try{
+            elementData = sortI.sort(elementData, size(),getC());
+
         }catch(Exception e){
              System.out.println("Class '"+elementData(0).getClass().getName()+"' must implements Comparable. Object '"+elementData(0).getClass().getName()+"' inserted in the order");
         }

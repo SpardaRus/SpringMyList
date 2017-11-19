@@ -1,4 +1,7 @@
 package sorts;
+
+import java.util.Comparator;
+
 /**
  * This class is a shell sort.
  * He implements SortI.
@@ -56,7 +59,7 @@ public class MySort implements SortI{
      * @return The sorted array
      */
     @Override
-    public Object[] sort(Object[] elementData, int size) {
+    public Object[] sort(Object[] elementData, int size, Comparator comparator) {
 
             Comparable[] elementTemp=new Comparable[size]; //Sorted MySort(Shell)
             for (int i = 0; i < size; i++) {
