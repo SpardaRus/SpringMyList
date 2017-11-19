@@ -18,10 +18,12 @@ public class Test {
      * test class "MyList"
      * @param ctx ApplicationContext
      */
+    @SuppressWarnings("unchecked")
     public void start(ApplicationContext ctx){
         System.out.println("Start test");
 
         System.out.println("Test: BigInteger");
+
         MyList<BigInteger> in=(MyList<BigInteger>) ctx.getBean("myList");
 
         in.add(new BigInteger("2568979879879879878978485184"));

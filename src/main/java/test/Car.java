@@ -19,7 +19,9 @@ public class Car implements Comparable<Car> {
 
 
     public int compareTo(Car o) {
-        return price > o.price ? 1 : price == o.price ? 0 : -1;
+        if (price > o.price) return -1;
+        else if (price == o.price) return 0;
+        else return 1;
     }
 
     @Override
