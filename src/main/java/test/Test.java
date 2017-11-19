@@ -4,10 +4,8 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import java.math.BigInteger;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
+
 import list.MyList;
 
 /**
@@ -52,6 +50,12 @@ public class Test {
 
         System.out.println("Test: Human - no implements Comparable");
         MyList<Human> mh=(MyList<Human>)ctx.getBean("myList");
+        mh.setC(new Comparator<Human>() {
+            @Override
+            public int compare(Human o1, Human o2) {
+                return o1.getName().compareTo(o2.getName());
+            }
+        });
         mh.add(new Human("Grand"));
         mh.add(new Human("Stefan"));
         mh.add(new Human("Alex"));
@@ -63,6 +67,8 @@ public class Test {
         mh.add((Human)ctx.getBean("human"));
 
         System.out.println(mh);
+
+
         System.out.println();
 
         System.out.println("Test: Car - implements Comparable");

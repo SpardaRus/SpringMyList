@@ -13,6 +13,15 @@ public class MyList<E> extends AbstractList<E> implements List<E>, Cloneable {
      * Sorted
      */
     public SortI sortI;
+    private Comparator c=null;
+
+    public Comparator getC() {
+        return c;
+    }
+
+    public void setC(Comparator c) {
+        this.c = c;
+    }
 
     public SortI getSortI() {
         return sortI;
@@ -57,6 +66,8 @@ public class MyList<E> extends AbstractList<E> implements List<E>, Cloneable {
         this.elementData = DEFAULTCAPACITY_EMPTY_ELEMENTDATA;
     }
 
+
+    public MyList(Comparator c){}
     /**
      * Constructs a list containing the elements of the specified
      * collection, in the order they are returned by the collection's
@@ -334,11 +345,23 @@ public class MyList<E> extends AbstractList<E> implements List<E>, Cloneable {
      * Sorts MyList
      */
     private void sorts(){
-        try{
-           elementData=sortI.sort(elementData,size());
+        try{if(c!=null){
+            sort(c);
+        }else {
+            elementData = sortI.sort(elementData, size());
+        }
         }catch(Exception e){
              System.out.println("Class '"+elementData(0).getClass().getName()+"' must implements Comparable. Object '"+elementData(0).getClass().getName()+"' inserted in the order");
         }
+    }
+    @Override
+    @SuppressWarnings("unchecked")
+    public void sort(Comparator<? super E> c) {
+        final int expectedModCount = modCount;
+        Arrays.sort((E[]) elementData, 0, size, c);
+        if (modCount != expectedModCount)
+            throw new ConcurrentModificationException();
+        modCount++;
     }
     /**
      * Appends the specified element to the end of this list and sorts.
