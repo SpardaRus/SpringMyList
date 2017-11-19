@@ -67,7 +67,7 @@ public class MyList<E> extends AbstractList<E> implements List<E>, Cloneable {
     }
 
 
-    public MyList(Comparator c){}
+    public MyList(Comparator c){this.c=c;}
     /**
      * Constructs a list containing the elements of the specified
      * collection, in the order they are returned by the collection's
